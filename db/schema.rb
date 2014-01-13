@@ -11,7 +11,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140113194732) do
+ActiveRecord::Schema.define(:version => 20140113211228) do
+
+  create_table "classifications", :force => true do |t|
+    t.string   "type",          :null => false
+    t.string   "result",        :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "text_entry_id"
+  end
+
+  create_table "text_entries", :force => true do |t|
+    t.string   "title",      :default => "untitled"
+    t.string   "content",                            :null => false
+    t.string   "type",                               :null => false
+    t.string   "url"
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+    t.integer  "user_id"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
