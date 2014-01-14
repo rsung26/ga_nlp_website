@@ -1,6 +1,7 @@
 <form action="<%= text_entries_path %>" method="post">
-	<input type="text" name="title">
-	<input type="text" name="source">
-	<input type="text" name="content">
+	 <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+	<input type="text" name="title" placeholder="title">
+	<input type="text" name="source" placeholder="source">
+	<input type="text" name="content" placeholder="content">
 	<input type="submit" id="submit">
 </form>
