@@ -14,17 +14,17 @@
 ActiveRecord::Schema.define(:version => 20140113211228) do
 
   create_table "classifications", :force => true do |t|
-    t.string   "type",          :null => false
-    t.string   "result",        :null => false
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.string   "classification_type", :null => false
+    t.string   "result",              :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
     t.integer  "text_entry_id"
   end
 
   create_table "text_entries", :force => true do |t|
     t.string   "title",      :default => "untitled"
     t.string   "content",                            :null => false
-    t.string   "type",                               :null => false
+    t.string   "source",                             :null => false
     t.string   "url"
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false

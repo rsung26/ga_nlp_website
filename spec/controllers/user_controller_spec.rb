@@ -8,6 +8,9 @@ describe UsersController do
 		end
 
 		describe "when signed out" do
+			before do
+				sign_out @user
+			end
 			it "it should redirect to the home page" do
 				get :index
 				response.should redirect_to(new_user_session_path)

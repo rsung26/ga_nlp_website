@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe TextEntry do
+describe PagesController do
 	
 end
