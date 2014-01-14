@@ -1,6 +1,10 @@
 class Classification < ActiveRecord::Base
-	attr_accessible :classification_type, :result
+	attr_accessible :method, :result
 
 	belongs_to :text_entry
+
+	def create
+
+	end
 	
 end

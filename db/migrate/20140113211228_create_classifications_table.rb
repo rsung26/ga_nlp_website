@@ -1,7 +1,7 @@
 class CreateClassificationsTable < ActiveRecord::Migration
   def up
   	create_table :classifications do |t|
-  		t.string :classification_type, :null => false
+  		t.string :method, :null => false
   		t.string :result, :null => false
   		t.timestamps
 

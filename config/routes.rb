@@ -1,10 +1,10 @@
 GaNlpWebsite::Application.routes.draw do
   devise_for :users
-  root :to => "users#index"
+
+  root :to => "home#index"
 
   resources :text_entries
-  # resources :classifications
-  # root :to => "pages#main"
+  resources :classifications
 
 
   # The priority is based upon order of creation:

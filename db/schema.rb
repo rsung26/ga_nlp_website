@@ -14,10 +14,10 @@
 ActiveRecord::Schema.define(:version => 20140113211228) do
 
   create_table "classifications", :force => true do |t|
-    t.string   "classification_type", :null => false
-    t.string   "result",              :null => false
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.string   "method",        :null => false
+    t.string   "result",        :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.integer  "text_entry_id"
   end
 
