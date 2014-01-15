@@ -1,9 +1,5 @@
 class ClassificationsController < ApplicationController
 	
-	def new
-
-	end
-
 	def create
 		datumbox = Datumbox.new(ENV['DATUMBOX_KEY'])
 
@@ -23,6 +19,11 @@ class ClassificationsController < ApplicationController
 	end
 
 	def destroy
+		text_entry = TextEntry.find(params[:text_entry_id])
+		
+		Classification.delete(params[:id])
+		text_entry.classifications.pop
 
+		redirect_to text_entry_path(text_entry)
 	end
 end
