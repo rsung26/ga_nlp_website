@@ -2,7 +2,7 @@
 	<input name="_method" type="hidden" value="put" />
 	 <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
 	<input type="text" name="title" value="<%= @text_entry.title %>">
-	<input type="text" name="source" value="<%= @text_entry.source %>">
 	<input type="text" name="content" value="<%= @text_entry.content %>">
+	<input type="hidden" name="source" value="<%= @text_entry.source %>">
 	<input type="submit" id="submit">
 </form>

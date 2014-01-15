@@ -1,9 +1,9 @@
 <h2>My Entries</h2>
-<a href="<%= new_text_entry_path %>">Create a New Entry</a>
 <table>
 	<% @user_text_entries.each do |t| %>
 	<tr class="text_entry_<%=t.id%>">
 		<td><a href="<%= text_entry_path(t)%>"><%= t.title %></a></td>
+		<td><%= t.source %></td>
 		<td><a href="<%= edit_text_entry_path(t)%>">EDIT</a></td>
 		<td>
 			<form action="<%=text_entry_path(t)%>" method="post">
@@ -18,3 +18,4 @@
 	</tr>
 	<% end %>
 </table>
+<a href="<%= new_text_entry_path %>">Create a New Entry</a>

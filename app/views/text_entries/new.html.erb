@@ -7,3 +7,12 @@
 
 	<input type="submit" id="submit">
 </form>
+
+<h1>Create a New Twitter Entry</h1>
+<form action="<%= text_entries_path %>" method="post">
+	<input type="text" name="title" placeholder="title">
+	<input type="text" name="url" placeholder="URL of tweet">
+	<input type="hidden" name="source" value="twitter">
+	<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+	<input type="submit" id="submit">
+</form>

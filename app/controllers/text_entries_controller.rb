@@ -11,10 +11,27 @@ class TextEntriesController < ApplicationController
 	end
 
 	def create
-		t = TextEntry.create(title: params[:title], content: params[:content], source:params[:source])
+
+		if params[:source] == "twitter"
+			url = params[:url]
+			tweet_id = url.scan(/status\/(.+)/).join
+
+			client = Twitter::REST::Client.new do |config|
+			  config.consumer_key        = ENV["TWITTER_CONSUMER_KEY"]
+			  config.consumer_secret     = ENV["TWITTER_CONSUMER_SECRET"]
+			  config.access_token        = ENV["TWITTER_ACCESS_TOKEN"]
+			  config.access_token_secret = ENV["TWITTER_ACCESS_SECRET"]
+			end
+
+			content = client.status(tweet_id).text
+		else
+			content = params[:content]
+		end
+
+		t = TextEntry.create(title: params[:title], content: content, source:params[:source], url:params[:url])
 		current_user.text_entries << t
 
-		redirect_to text_entries_path		
+		redirect_to text_entry_path(t)		
 	end
 
 	def edit
@@ -42,6 +59,8 @@ class TextEntriesController < ApplicationController
 	def destroy
 		TextEntry.delete(params[:id])
 		current_user.text_entries.pop
+
+		binding.pry
 		# Pop off text entry
 		redirect_to text_entries_path	
 	end

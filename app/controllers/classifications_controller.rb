@@ -5,22 +5,35 @@ class ClassificationsController < ApplicationController
 
 		text_entry = TextEntry.find(params[:text_entry_id])
 		method_name = params[:classify_method]
-		result = datumbox.send method_name.to_sym, {text: text_entry.content}
 
-		# Write Values to database
-		c = Classification.new
-		c.method = method_name
-		c.result = result
-		c.save
 
-		text_entry.classifications << c
+		if Classification.where(text_entry_id: text_entry.id).where(method: method_name).empty?
+			response = datumbox.send method_name.to_sym, {text: text_entry.content}
+
+			response_parsed = JSON(response)
+			result = response_parsed["output"]["result"]
+
+			if method_name == "language_detection"
+				result = ISO::Language.find(result).name
+			end
+
+			# Write Values to database
+			c = Classification.new
+			c.method = method_name
+			c.result = result
+			c.save
+
+ 			text_entry.classifications << c
+ 		else
+ 			puts "that classification already exists"
+		end
 
 		redirect_to text_entry_path(text_entry)
 	end
 
 	def destroy
 		text_entry = TextEntry.find(params[:text_entry_id])
-		
+
 		Classification.delete(params[:id])
 		text_entry.classifications.pop
 

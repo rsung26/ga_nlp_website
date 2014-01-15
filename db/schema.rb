@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(:version => 20140113211228) do
 
   create_table "text_entries", :force => true do |t|
     t.string   "title",      :default => "untitled"
-    t.string   "content",                            :null => false
+    t.text     "content",                            :null => false
     t.string   "source",                             :null => false
     t.string   "url"
     t.datetime "created_at",                         :null => false

@@ -27,8 +27,10 @@ gem 'devise'
 
 gem 'pry'
 gem 'pry-nav'
-gem "rest-client", "~> 1.6.7
-"
+gem 'rest-client', "~> 1.6.7"
+gem 'twitter', "~> 5.5.1"
+gem "iso", "~> 0.2.0"
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
