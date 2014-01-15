@@ -22,7 +22,6 @@ describe TextEntriesController do
 			it "creates a new text entry" do
 				fill_in "title", with: @title
 				fill_in "content", with: @content
-				fill_in "source", with: @source
 				click_button "submit"
 				current_path.should == text_entries_path
 				page.should have_content(@title)
