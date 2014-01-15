@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>GaNlpWebsite</title>
+  <title>General Assembly Project One</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 	<div class="container">
+		<a href="/">Home</a>
+		<a href="/about">About</a>
+		<a href="/contact">Contact</a>
 	   	<% if user_signed_in? %>
 	   		<p>Welcome, <%= current_user.email %></p>
 			<%= link_to "sign-out", destroy_user_session_path, method: :delete %>
 		<% else %>
 			<%= link_to "sign-in",new_user_session_path %>
-			<%= link_to "sign-up", new_user_registration_path %>
 		<% end %>
 
 	   <p class="notice"><%= notice %></p>

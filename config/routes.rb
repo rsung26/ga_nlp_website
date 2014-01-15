@@ -2,6 +2,8 @@ GaNlpWebsite::Application.routes.draw do
   devise_for :users
 
   root :to => "home#index"
+  get "/about" => "home#about"
+  get "/contact" => "home#contact"
 
   resources :text_entries
   resources :classifications

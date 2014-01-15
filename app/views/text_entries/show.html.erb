@@ -1,3 +1,29 @@
-<h2><%= @text_entry.title %></h2>
+<h1><%= @text_entry.title %></h1>
 <h4>Type:<%= @text_entry.source %></h4>
 <p><%= @text_entry.content %></p>
+
+<h4>Classification</h4>
+<table>
+	<% @text_entry.classifications.each do |c| %>
+	<tr>
+		<td><%= c.method %></td>
+		<td><%= c.result%></td>
+		<td>DELETE</td>
+	</tr>
+	<% end %>
+</table>
+
+<h4>Classify this text</h4>
+<!-- Add a Dropdown form which allows users to add a classification to the text -->
+<form action="<%= classifications_path %>" method="post">
+	<input type="radio" name="classify_method" value="sentiment_analysis">Sentiment<br>
+	<input type="radio" name="classify_method" value="topic_classification">Topic<br>
+	<input type="radio" name="classify_method" value="language_detection">Language Detection<br>
+	<input type="hidden" name="text_entry_id" value="<%= @text_entry.id %>">
+	<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+
+	<input type="submit" value="submit">
+</form>
+
+
+

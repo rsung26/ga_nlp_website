@@ -1,37 +1,20 @@
-<h1>This is the Main Homepage</h1>
-
-<% if user_signed_in? %>
-	<p>You are Signed in and can see everything</p>
-
-	<h2>My text entries</h2>
-
-	<table>
-		<% @user_text_entries.each do |t| %>
-		<tr class="text_entry_<%=t.id%>">
-			<td><a href="<%= text_entry_path(t)%>"><%= t.title %></a></td>
-			<td><a href="<%= edit_text_entry_path(t)%>">EDIT</a></td>
-			<td>
-				<form action="<%=text_entry_path(t)%>" method="post">
-					<input type="hidden" value="delete" name="_method">
-					<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
-					<button>DELETE</button>
-				</form>
-			</td>
-		</tr>
+<h2>My Entries</h2>
+<a href="<%= new_text_entry_path %>">Create a New Entry</a>
+<table>
+	<% @user_text_entries.each do |t| %>
+	<tr class="text_entry_<%=t.id%>">
+		<td><a href="<%= text_entry_path(t)%>"><%= t.title %></a></td>
+		<td><a href="<%= edit_text_entry_path(t)%>">EDIT</a></td>
+		<td>
+			<form action="<%=text_entry_path(t)%>" method="post">
+				<input type="hidden" value="delete" name="_method">
+				<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+				<button>DELETE</button>
+			</form>
+		</td>
+		<% if t.classifications.empty? %>
+			<td>Not Yet Classified</td>
 		<% end %>
-	</table>
-
-	<a href="<%= new_text_entry_path %>">Create a New Text Entry</a>
-
-<!-- User is not signed in -->
-<% else %>
-	<p>This Website allows you to apply Machine Learning Classificatons on text. It is a primarily Ruby on Rails application using the Datumbox API.</p>
-
-	<h2>List of all text entries</h2>
-	<ul>
-		<% @text_entries.each do |t| %>
-		<li><%= t.title %> : <%= t.content %></li>
-		<% end %>
-	</ul>
-
-<% end %>
+	</tr>
+	<% end %>
+</table>
