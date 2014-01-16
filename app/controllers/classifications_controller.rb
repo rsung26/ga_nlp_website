@@ -6,7 +6,7 @@ class ClassificationsController < ApplicationController
 		text_entry = TextEntry.find(params[:text_entry_id])
 		method_name = params[:classify_method]
 
-
+		# Check if the text has already been classifised a certain way
 		if Classification.where(text_entry_id: text_entry.id).where(method: method_name).empty?
 			response = datumbox.send method_name.to_sym, {text: text_entry.content}
 
@@ -22,10 +22,7 @@ class ClassificationsController < ApplicationController
 			c.method = method_name
 			c.result = result
 			c.save
-
  			text_entry.classifications << c
- 		else
- 			puts "that classification already exists"
 		end
 
 		redirect_to text_entry_path(text_entry)

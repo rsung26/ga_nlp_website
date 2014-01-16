@@ -1,18 +1,22 @@
-<h1>Enter a New Text Entry</h1>
-<form action="<%= text_entries_path %>" method="post">
-	<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
-	<input type="text" name="title" placeholder="title">
-	<textarea name="content" rows="10" cols="50" placeholder="content"></textarea>
-	<input type="hidden" name="source" value="text">
+<div class="col-md-5">
+	<h1>Enter a New Text Entry</h1>
+	<form action="<%= text_entries_path %>" method="post">
+		<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+		<input type="text" name="title" placeholder="title">
+		<textarea name="content" rows="10" cols="40" placeholder="content"></textarea>
+		<input type="hidden" name="source" value="text">
 
-	<input type="submit" id="submit">
-</form>
+		<input type="submit" id="submit">
+	</form>
+</div>
 
-<h1>Create a New Twitter Entry</h1>
-<form action="<%= text_entries_path %>" method="post">
-	<input type="text" name="title" placeholder="title">
-	<input type="text" name="url" placeholder="URL of tweet">
-	<input type="hidden" name="source" value="twitter">
-	<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
-	<input type="submit" id="submit">
-</form>
+<div class="col-md-6">
+	<h1>Create a New Twitter Entry</h1>
+	<form class="clearfix" action="<%= text_entries_path %>" method="post">
+		<input type="text" name="title" placeholder="title">
+		<input type="text" name="url" placeholder="URL of tweet">
+		<input type="hidden" name="source" value="twitter">
+		<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+		<input type="submit" id="submit">
+	</form>
+</div>

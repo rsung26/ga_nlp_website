@@ -7,22 +7,33 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<div class="container">
-		<a href="/">Home</a>
-		<a href="/about">About</a>
-		<a href="/contact">Contact</a>
-	   	<% if user_signed_in? %>
-	   		<p>Welcome, <%= current_user.email %></p>
-			<%= link_to "sign-out", destroy_user_session_path, method: :delete %>
-		<% else %>
-			<%= link_to "sign-in",new_user_session_path %>
-		<% end %>
+	<div class="navbar navbar-default navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/">Home</a>
+			</div>
+			
+			<ul class="nav navbar-nav">
+				<li><a href="/about">About</a></li>
+				<li><a href="/contact">Contact</a></li>
+			</ul>
+				
+			<ul class="nav navbar-nav navbar-right">
+			   	<% if user_signed_in? %>
+			   		<li><a href=""><%= current_user.email %></a></li>
+					<li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+				<% else %>
+					<li><%= link_to "Sign In",new_user_session_path %></li>
+				<% end %>
+			</ul>
+		</div>
+	</div>
 
-	   <p class="notice"><%= notice %></p>
-	   <p class="alert"><%= alert %></p>
+	<div class="container">
+   		<p class="notice"><%= notice %></p>
+   		<p class="alert"><%= alert %></p>
 
 		<%= yield %>
-
 	</div>
 </body>
 </html>
