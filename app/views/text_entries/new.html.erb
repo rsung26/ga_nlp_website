@@ -1,22 +1,29 @@
 <div class="col-md-5">
 	<h1>Enter a New Text Entry</h1>
 	<form action="<%= text_entries_path %>" method="post">
-		<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
-		<input type="text" name="title" placeholder="title">
-		<textarea name="content" rows="10" cols="40" placeholder="content"></textarea>
-		<input type="hidden" name="source" value="text">
+		<div class="form-group">
+			<label for="title">Title:</label>
+			<input type="text" name="title">
+			<textarea class= "form-control"name="content" placeholder="Type some text in here."></textarea>
 
-		<input type="submit" id="submit">
+			<input type="hidden" name="source" value="text">
+			<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+			<input class= "btn btn-default"type="submit" id="submit" value="Enter">
+		</div>
 	</form>
 </div>
 
-<div class="col-md-6">
+<div class="col-md-5">
 	<h1>Create a New Twitter Entry</h1>
 	<form class="clearfix" action="<%= text_entries_path %>" method="post">
-		<input type="text" name="title" placeholder="title">
-		<input type="text" name="url" placeholder="URL of tweet">
-		<input type="hidden" name="source" value="twitter">
-		<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
-		<input type="submit" id="submit">
+		<div class="form-group">
+			<label for="title">Title:</label>
+			<input type="text" name="title">
+			<input class= "form-control" type="text" name="url" placeholder="URL of tweet">
+
+			<input type="hidden" name="source" value="twitter">
+			<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+			<input class="btn btn-default" type="submit" id="submit" value="Enter">
+		</div>
 	</form>
 </div>
