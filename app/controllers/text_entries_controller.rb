@@ -2,16 +2,11 @@ class TextEntriesController < ApplicationController
 
 	before_filter :authenticate_user!
 
-	def index
-		@text_entries = TextEntry.all
-	end
-
 	def new
 
 	end
 
 	def create
-
 		if params[:source] == "twitter"
 			url = params[:url]
 			tweet_id = url.scan(/status\/(.+)/).join
@@ -34,14 +29,15 @@ class TextEntriesController < ApplicationController
 		redirect_to text_entry_path(t)		
 	end
 
-	def edit
-		@text_entry = TextEntry.find(params[:id])
-	end
 
 	def show
 		@text_entry = TextEntry.find(params[:id])
 	end
 
+
+	def edit
+		@text_entry = TextEntry.find(params[:id])
+	end
 
 	def update
 		text_entry = TextEntry.find(params[:id])
@@ -56,13 +52,11 @@ class TextEntriesController < ApplicationController
 		redirect_to text_entry_path(text_entry)
 	end
 
+
 	def destroy
 		TextEntry.delete(params[:id])
 		current_user.text_entries.pop
 
-		binding.pry
-		# Pop off text entry
-		redirect_to text_entries_path	
-	end
-	
+		redirect_to root_path	
+	end	
 end

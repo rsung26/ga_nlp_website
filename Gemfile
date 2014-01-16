@@ -25,6 +25,8 @@ gem 'rspec-rails'
 gem 'capybara'
 gem 'devise'
 
+gem 'simplecov', :require => false, :group => :test
+
 gem 'pry'
 gem 'pry-nav'
 gem 'rest-client', "~> 1.6.7"

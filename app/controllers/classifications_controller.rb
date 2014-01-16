@@ -1,15 +1,15 @@
 class ClassificationsController < ApplicationController
 	
 	def create
-		datumbox = Datumbox.new(ENV['DATUMBOX_KEY'])
-
 		text_entry = TextEntry.find(params[:text_entry_id])
 		method_name = params[:classify_method]
 
 		# Check if the text has already been classifised a certain way
 		if Classification.where(text_entry_id: text_entry.id).where(method: method_name).empty?
-			response = datumbox.send method_name.to_sym, {text: text_entry.content}
 
+			datumbox = Datumbox.new(ENV['DATUMBOX_KEY'])
+
+			response = datumbox.send method_name.to_sym, {text: text_entry.content}
 			response_parsed = JSON(response)
 			result = response_parsed["output"]["result"]
 
@@ -17,11 +17,7 @@ class ClassificationsController < ApplicationController
 				result = ISO::Language.find(result).name
 			end
 
-			# Write Values to database
-			c = Classification.new
-			c.method = method_name
-			c.result = result
-			c.save
+			c = Classification.create({method: method_name, result: result})
  			text_entry.classifications << c
 		end
 

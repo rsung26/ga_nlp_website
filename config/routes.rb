@@ -5,8 +5,8 @@ GaNlpWebsite::Application.routes.draw do
   get "/about" => "home#about"
   get "/contact" => "home#contact"
 
-  resources :text_entries
-  resources :classifications
+  resources :text_entries, :except => [:index]
+  resources :classifications, :only => [:create,:destroy]
 
 
   # The priority is based upon order of creation:

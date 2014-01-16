@@ -1,4 +1,3 @@
-
 class TextEntry < ActiveRecord::Base
 	attr_accessible :title, :content, :source, :url
 
