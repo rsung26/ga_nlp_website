@@ -4,27 +4,6 @@
 	<p class="well"><%= @text_entry.content %></p>
 </div>
 
-
-
-<div class="">
-	<h4>Classifications</h4>
-	<table>
-		<% @text_entry.classifications.each do |c| %>
-		<tr>
-			<td><%= c.method.split("_")[0].capitalize %>?</td>
-			<td><%= c.result.capitalize %></td>
-<!-- 			<td>
-				<form action="<%=classification_path(c)%>" method="post">
-					<input type="hidden" value="delete" name="_method">
-					<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
-					<input type="hidden" name="text_entry_id" value="<%= @text_entry.id %>">
-					<button>DELETE</button>
-				</form>
-			</td> -->
-		</tr>
-		<% end %>
-	</table>
-</div>
 <div class="col-md-3">
 	<div class="panel panel-primary">
 		<div class="panel-heading"><h3 class="panel-title">Enter a Classification</h3></div>
@@ -47,4 +26,30 @@
 			</form>
 		</div>
 	</div>
+</div>
+
+<div class="col-md-9">
+	<h4>Classifications</h4>
+	<table class="table table-bordered">
+		<thead>
+		<% @text_entry.classifications.each do |c| %>
+			<th>
+				<%= c.method.split("_")[0].capitalize %>? 
+				<form class="pull-right" action="<%=classification_path(c)%>" method="post">
+					<input type="hidden" value="delete" name="_method">
+					<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+					<input type="hidden" name="text_entry_id" value="<%= @text_entry.id %>">
+					<button class="btn-link">delete</button>
+				</form>
+			</th>
+		<% end %>
+		</thead>
+
+		<tr>
+		<% @text_entry.classifications.each do |c| %>
+			<td><%= c.result.capitalize %></td>
+		<% end %>
+		</tr>
+
+	</table>
 </div>
