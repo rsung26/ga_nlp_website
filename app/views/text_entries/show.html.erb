@@ -1,12 +1,14 @@
+
 <div class="">
-	<h2><%= @text_entry.title %></h2>
-	<h4>Type:<%= @text_entry.source %></h4>
+	<h2><%= @text_entry.title %>: <%= @text_entry.source %></h2>
 	<p class="well"><%= @text_entry.content %></p>
 </div>
 
 <div class="col-md-3">
 	<div class="panel panel-primary">
-		<div class="panel-heading"><h3 class="panel-title">Enter a Classification</h3></div>
+		<div class="panel-heading">
+			<h3 class="panel-title">Enter a Classification</h3>
+		</div>
 		<div class="panel-body">
 			<form action="<%= classifications_path %>" method="post">
 				<div class="form-group">
@@ -21,7 +23,7 @@
 
 					<input type="hidden" name="text_entry_id" value="<%= @text_entry.id %>">
 					<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
-					<input type="submit" value="submit">
+					<input class="btn btn-primary btn-large"type="submit" value="Classify">
 				</div>
 			</form>
 		</div>
@@ -34,7 +36,12 @@
 		<thead>
 		<% @text_entry.classifications.each do |c| %>
 			<th>
-				<%= c.method.split("_")[0].capitalize %>? 
+				<% if c.method == "twitter_sentiment_analysis" %>
+					<%= c.method.split("_")[1].capitalize %>?
+				<% else %>
+					<%= c.method.split("_")[0].capitalize %>? 
+				<% end %>
+
 				<form class="pull-right" action="<%=classification_path(c)%>" method="post">
 					<input type="hidden" value="delete" name="_method">
 					<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />

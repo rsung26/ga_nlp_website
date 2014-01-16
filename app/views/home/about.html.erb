@@ -1,20 +1,16 @@
-<h1>General Assembly Natural Language Processing Website</h1>
-	<p>This Website allows you to readily apply Machine Learning Classificatons on text and tweets. It is a Ruby on Rails application using the Datumbox API and Twitter API.</p>
+<h4>Analyze the meaning behind language with the help of Machine Learning. A call to the <a href="http://www.datumbox.com/">Datumbox API</a> will read and classify text. You can easily type in your own text or enter the URL of a Twitter Post.</h4>
 
-	<h4>Example:</h4>
-	<p>Call me Ishmael. Some years ago - never mind how long precisely - having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world. It is a way I have of driving off the spleen and regulating the circulation. Whenever I find myself growing grim about the mouth; whenever it is a damp, drizzly November in my soul; whenever I find myself involuntarily pausing before coffin warehouses, and bringing up the rear of every funeral I meet; and especially whenever my hypos get such an upper hand of me, that it requires a strong moral principle to prevent me from deliberately stepping into the street, and methodically knocking people's hats off - then, I account it high time to get to sea as soon as I can. This is my substitute for pistol and ball. With a philosophical flourish Cato throws himself upon his sword; I quietly take to the ship. There is nothing surprising in this. If they but knew it, almost all men in their degree, some time or other, cherish very nearly the same feelings towards the ocean with me. </p>
+<p>Example #1:</p>
+<p class="well"><em>"You get a lot of movie for your sixteen bucks, but you'd have a better time if you got less movie ... The staggering bloat aside, there are some hysterically funny scenes, killer dialogue, great performances, and Scorcese-level craftsmanship throughout."</em></p>
 
-	<h4>You can freely apply different types of classifications on that text.</h4>
-	<ul>
-		<li>What is the Sentiment?</li>
-		<li>The Topic?</li>
-		<li>Is it Spam?</li>
-		<li>What Language is it in?</li>
-	</ul>
+<p>Example #2:</p>
+<p class="well"><em>"If you are reading this because it is your darling fragrance, please wear it at home exclusively, and tape the windows shut"</em></p>
 
-	<div class="col-md-9">
-	<table class="table table-bordered">
+<h4>The meaning behing these examples:</h4>
+<div class="col-md-8 col-md-offset-2">
+	<table class="table table-condensed">
 		<thead>
+			<th></th>
 			<th>Sentiment?</th>
 			<th>Topic?</th>
 			<th>Spam?</th>
@@ -22,11 +18,20 @@
 		</thead>
 
 		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
+			<td>Example 1</td>
+			<td>Positive</td>
+			<td>Arts</td>
+			<td>Nospam</td>
+			<td>English</td>
 		</tr>
+		<tr>
+			<td>Example 2</td>
+			<td>Negative</td>
+			<td>Shopping</td>
+			<td>Spam</td>
+			<td>English</td>
+		</tr>
+
 
 	</table>
 </div>

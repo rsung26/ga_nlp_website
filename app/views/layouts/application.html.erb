@@ -10,14 +10,14 @@
 	<div class="navbar navbar-default navbar-inverse">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="/">Home</a>
+				<a class="navbar-brand" href="/">GA-NLP</a>
 			</div>
 			
 			<ul class="nav navbar-nav">
 				<li><a href="/about">About</a></li>
 				<li><a href="/contact">Contact</a></li>
 			</ul>
-				
+
 			<ul class="nav navbar-nav navbar-right">
 			   	<% if user_signed_in? %>
 			   		<li><a href=""><%= current_user.email %></a></li>
@@ -26,13 +26,15 @@
 					<li><%= link_to "Sign In",new_user_session_path %></li>
 				<% end %>
 			</ul>
+
+			<ul class="nav navbar-nav navbar-right">
+		   		<li class="notice pull-right"><%= notice %></li>
+				<li class="alert pull-right"><%= alert %></li>
+			</ul>
 		</div>
 	</div>
 
 	<div class="container">
-   		<p class="notice pull-right"><%= notice %></p>
-   		<p class="alert pull-right"><%= alert %></p>
-
 		<%= yield %>
 	</div>
 </body>

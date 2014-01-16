@@ -1,13 +1,15 @@
-<div>
-	<h2>My Entries</h2>
-	<form action="<%= new_text_entry_path %>" method="get">
-		<input type="submit" class="btn btn-primary btn-large" value="Create New Entry">
+<div class="row">
+	<h2 class="">My Entries</h2>
+	<form class="" action="<%= new_text_entry_path %>" method="get">
+		<input type="submit" class="btn btn-primary" value="Create New Entry">
 	</form>
 </div>
 
+<hr>
 
 <table class="table">
 	<thead>
+		<th></th>
 		<th>Title</th>
 		<th>Type</th>
 		<th>Classified?</th>
@@ -17,6 +19,11 @@
 	</thead>
 	<% @user_text_entries.each do |t| %>
 	<tr class="text_entry_<%=t.id%>">
+		<td>	
+			<form class="col-md-2" action="<%= text_entry_path(t) %>" method="get">
+				<input type="submit" class="btn btn-success btn-sm" value="Classify">
+			</form>
+		</td>
 		<td><strong><a href="<%= text_entry_path(t)%>"><%= t.title %></a></strong></td>
 		<td><%= t.source %></td>
 
@@ -27,7 +34,7 @@
 		<% end %>
 
 		<td><%= Time.at(t.created_at.to_i).to_formatted_s(:long_ordinal) %></td>
-		<td><%= Time.at(t.updated_at.to_i).to_formatted_s(:long_ordinal)  %></td>
+		<td><%= Time.at(t.updated_at.to_i).to_formatted_s(:long_ordinal) %></td>
 
 		<td><a href="<%= edit_text_entry_path(t)%>">EDIT</a></td>
 		<td>
