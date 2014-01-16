@@ -1,5 +1,6 @@
-#General Assembly Project 1 Website: Natural Language Processing
+#General Assembly WDI Project 1
+## Natural Language Processing Website using APIs
 
-This application enables users to apply machine learning classifications to text in a easy to use web interface.
+-This application enables users to apply machine learning classifications on text.
 
-HEROKU: http://ga-nlp.herokuapp.com/
+Heroku URL: http://ga-nlp.herokuapp.com/
