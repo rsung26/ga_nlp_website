@@ -1,5 +1,5 @@
-#General Assembly WDI Project 1
-## GA-NLP: Natural Language Processing Website using APIs
+#General Assembly WDI Project One
+##GA-NLP: Natural Language Processing Website
 
 Check out the site here: http://ga-nlp.herokuapp.com/
 
