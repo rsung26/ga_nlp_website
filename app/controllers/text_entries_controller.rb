@@ -11,6 +11,7 @@ class TextEntriesController < ApplicationController
 			url = params[:url]
 			tweet_id = url.scan(/status\/(.+)/).join
 
+			# Initialize twitter gem
 			client = Twitter::REST::Client.new do |config|
 			  config.consumer_key        = ENV["TWITTER_CONSUMER_KEY"]
 			  config.consumer_secret     = ENV["TWITTER_CONSUMER_SECRET"]
@@ -62,8 +63,6 @@ class TextEntriesController < ApplicationController
 		end
 
 		t.classifications.clear
-
-
 
 		TextEntry.delete(params[:id])
 		current_user.text_entries.pop
