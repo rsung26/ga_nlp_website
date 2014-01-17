@@ -15,8 +15,8 @@ To get started sign in or register. Then feel free to make any text entries or t
 After those entries are created, you can apply some of the several types of Machine Learning Classifications available.
 
 ###APIs and Notable Gems used
-⋅⋅⋅Datumbox API [http://www.datumbox.com/]
-⋅⋅⋅Twitter API
-⋅⋅⋅twitter gem
-⋅⋅⋅rest-client gem
-⋅⋅⋅simpleCOV gem 
+* Datumbox API http://www.datumbox.com/
+* Twitter API
+* Twitter gem
+* rest-client gem
+* simpleCOV gem 
