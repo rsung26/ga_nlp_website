@@ -55,9 +55,15 @@ class TextEntriesController < ApplicationController
 
 	def destroy
 		t = TextEntry.find(params[:id])
-		t.classifications.clear
 
 		# Need to actually delete those classifications to the DB
+		t.classifications.each do |c|
+			Classification.delete(c.id)
+		end
+
+		t.classifications.clear
+
+
 
 		TextEntry.delete(params[:id])
 		current_user.text_entries.pop
