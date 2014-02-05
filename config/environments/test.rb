@@ -34,4 +34,15 @@ GaNlpWebsite::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+  
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  :authentication => :plain,
+  :address => "smtp.mailgun.org",
+  :port => 587,
+  :domain => "ga-nlp.herokuapp.com",
+  :user_name => "postmaster@ga-nlp.herokuapp.com",
+  :password => ENV['MAILGUN_PASSWORD']
+  }
 end
