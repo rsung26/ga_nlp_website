@@ -1,7 +1,7 @@
 class UserMailer < ActionMailer::Base
   default from: "from@example.com"
 
-  #This is a custom method using 
+  #This is a custom method
   def welcome_user(user)
   	@user = user
   	@url = 'http://ga-nlp.herokuapp.com'
